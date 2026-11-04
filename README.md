@@ -1,52 +1,100 @@
-# EV Market Performance — Render Deployment
+# ⚡ EV INSIGHTS — EV Market Performance
 
-A Flask-powered website that presents the EV Market Performance Tableau dashboard and Tableau Story.
+### Exploring the Future of Electric Mobility
 
-## Included visualizations
+EV INSIGHTS is a data-driven web platform designed to explore and understand the electric vehicle (EV) market. It presents market trends, performance indicators, and interactive visualizations through Tableau dashboards and data stories.
 
-- Dashboard: https://public.tableau.com/views/Dashboard1_17937007105250/Dashboard1
-- Story: https://public.tableau.com/views/EVMARKET-STORY_17937005218180/Story1
+The project combines an interactive frontend, a Python Flask backend, and Tableau Public visualizations to make EV market insights accessible and easy to understand.
 
-The visualizations are embedded from Tableau Public. Tableau hosts the visualization content and interactive controls; this Flask application serves the website and its backend routes.
+## 🌐 Live Website
 
-## Project structure
+**Website:** https://ev-market-performance-tableau-1.onrender.com
+
+## 📊 Project Visualizations
+
+### 1. EV Market Performance Dashboard
+
+An interactive Tableau dashboard that presents EV market performance and key insights.
+
+[Open Interactive Dashboard](https://public.tableau.com/views/Dashboard1_17937007105250/Dashboard1)
+
+### 2. EV Market Data Story
+
+A visual data story exploring electric vehicle market trends and insights.
+
+[Explore Data Story](https://public.tableau.com/views/EVMARKET-STORY_17937005218180/Story1)
+
+## ✨ Features
+
+- Modern and responsive EV INSIGHTS website.
+- Interactive Tableau dashboard integration.
+- Tableau data story integration.
+- Dedicated Home, About, Dashboard, and Data Story sections.
+- Python Flask backend.
+- REST API endpoint for project information.
+- Health-check endpoint for deployment monitoring.
+- Deployment support through Render.
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Website structure |
+| CSS3 | Styling and responsive design |
+| JavaScript | Frontend interactions |
+| Python | Backend programming |
+| Flask | Backend web framework |
+| Tableau Public | Data visualization |
+| Gunicorn | Production WSGI server |
+| GitHub | Source code management |
+| Render | Website hosting and deployment |
+
+## 📁 Project Structure
 
 ```text
-EV_Market_Performance_Render/
+EV-Market-Performance-Tableau/
+│
 ├── app.py
 ├── requirements.txt
 ├── Procfile
 ├── render.yaml
+├── README.md
+│
 ├── templates/
 │   └── index.html
+│
 └── static/
     ├── style.css
     └── script.js
 ```
 
-## Deploy directly from GitHub to Render
+## ⚙️ Backend API
 
-1. Extract this ZIP file.
-2. Create a new GitHub repository.
-3. Upload the **contents inside** this folder to the repository root (do not upload only the ZIP).
-4. On Render, choose **New + → Web Service**.
-5. Connect the GitHub repository.
-6. Render should detect `render.yaml`. If it asks for settings, use:
-   - Runtime: Python
-   - Build command: `pip install -r requirements.txt`
-   - Start command: `gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120`
-7. Click **Deploy** and wait for the build to finish.
+The Flask backend provides the following routes:
 
-No VS Code or local run step is required.
+| Endpoint | Description |
+|---|---|
+| `/` | Serves the main website |
+| `/health` | Checks backend service health |
+| `/api/project` | Returns project information and visualization links |
 
-## Backend endpoints
+## 🚀 Deployment
 
-- `/` — serves the website
-- `/health` — Render health check; returns JSON status
-- `/api/project` — returns project and Tableau visualization metadata
+The project is configured for deployment on Render.
 
-## Important
+**Deployment configuration:**
 
-- The Tableau visualizations must be published and accessible on Tableau Public for the embeds to load.
-- This project does not copy Tableau's data or recreate Tableau's analytics engine. Tableau Public remains responsible for rendering the dashboard and story.
-- If you later want a separate database, user login, or custom analytics API, those are additional backend features and require a defined data source and requirements.
+- Runtime: Python
+- Build command:
+
+```bash
+pip install -r requirements.txt
+```
+
+- Start command:
+
+```bash
+gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --threads 4 --timeout 120
+```
+
+The `render.yaml`
